@@ -1,4 +1,4 @@
-﻿Shader "Custom/LightingShader"
+﻿Shader "Custom/PBLShader"
 {
 	Properties
 	{
@@ -19,11 +19,12 @@
 
 			CGPROGRAM
 
+			#pragma target 3.0
+
 			#pragma vertex VertexProgram
 			#pragma fragment FragmentProgram
 
-			#include "UnityStandardBRDF.cginc"
-			#include "UnityStandardUtils.cginc"
+			#include "UnityPBSLighting.cginc"
 
 			float4 _Tint;
 			sampler2D _MainTex;
@@ -72,15 +73,20 @@
 				albedo = DiffuseAndSpecularFromMetallic(
 					albedo, _Metallic, specularTint, oneMinusReflectivity
 				);
-				// albedo = EnergyConservationBetweenDiffuseAndSpecular(
-				// 	albedo, _SpecularTint.rgb, oneMinusReflectivity
-				// );
 
-				float3 diffuse = albedo * lightColor * DotClamped(lightDir, itp.normal);
+				UnityLight light;
+				light.color = lightColor;
+				light.dir = lightDir;
+				light.ndotl = DotClamped(itp.normal, lightDir);
 
-				float3 specular = specularTint * lightColor * pow(DotClamped(halfVector, itp.normal), _Smoothness * 100);
+				UnityIndirect indirectLight;
+				indirectLight.diffuse = 0;
+				indirectLight.specular = 0;
 
-				return float4(diffuse + specular, 1);
+				return UNITY_BRDF_PBS(albedo, specularTint,
+					oneMinusReflectivity, _Smoothness,
+					itp.normal, viewDir,
+					light, indirectLight);
 			}
 
 			ENDCG
