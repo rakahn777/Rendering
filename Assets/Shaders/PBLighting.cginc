@@ -1,6 +1,7 @@
 ﻿#if !defined(FIRST_LIGHTING_INCLUDED)
 #define FIRST_LIGHTING_INCLUDED
 
+#include "AutoLight.cginc"
 #include "UnityPBSLighting.cginc"
 
 float4 _Tint;
@@ -39,8 +40,15 @@ Interpolators VertexProgram(VertexData vData)
 UnityLight CreateLight(Interpolators i)
 {
 	UnityLight light;
-	light.color = _LightColor0.rgb;;
-	light.dir = normalize(_WorldSpaceLightPos0.xyz - i.worldPos);
+
+	#if defined(POINT)
+		light.dir = normalize(_WorldSpaceLightPos0.xyz - i.worldPos);
+	#else
+		light.dir = _WorldSpaceLightPos0.xyz;
+	#endif
+
+	UNITY_LIGHT_ATTENUATION(attenuation, 0, i.worldPos);
+	light.color = _LightColor0.rgb * attenuation;
 	light.ndotl = DotClamped(i.normal, light.dir);
 
 	return light;

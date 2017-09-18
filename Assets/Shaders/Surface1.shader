@@ -1,4 +1,4 @@
-﻿Shader "Custom/MultiLight"
+﻿Shader "Custom/Surface1"
 {
 	Properties
 	{
@@ -44,10 +44,10 @@
 
 			#pragma target 3.0
 
-			#pragma multi_compile DIRECTION POINT
-
 			#pragma vertex VertexProgram
 			#pragma fragment FragmentProgram
+
+			#define POINT
 
 			#include "PBLighting.cginc"
 
