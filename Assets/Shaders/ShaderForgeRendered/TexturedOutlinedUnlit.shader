@@ -69,7 +69,6 @@ Shader "Custom/TexturedOutlinedUnlit" {
             #pragma vertex vert
             #pragma fragment frag
 
-            #define UNITY_PASS_FORWARDBASE
             #include "UnityCG.cginc"
 
             float4 _Light;

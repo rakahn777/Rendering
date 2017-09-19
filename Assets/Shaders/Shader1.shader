@@ -4,6 +4,7 @@
 	{
 		_Tint ("Tint", Color) = (1, 1, 1, 1)
 		_MainTex ("Texture", 2D) = "white" {}
+		_BlendFactor ("Blend", Range(0, 1)) = 0
 	}
 
 	SubShader
