@@ -1,15 +1,25 @@
-﻿Shader "Custom/Shader1"
+﻿Shader "Custom/Transparent/Textured Colored"
 {
 	Properties
 	{
 		_Tint ("Tint", Color) = (1, 1, 1, 1)
 		_MainTex ("Texture", 2D) = "white" {}
-		_BlendFactor ("Blend", Range(0, 1)) = 0
 	}
 
 	SubShader
 	{
-		Pass {
+		Tags 
+		{
+			"Queue"="Transparent"
+			"RenderType"="Transparent"
+		}
+
+		Pass 
+		{
+			// Cull Off
+			ZWrite Off
+			Blend SrcAlpha OneMinusSrcAlpha
+			
 			CGPROGRAM
 
 			#pragma vertex VertexProgram
@@ -37,7 +47,7 @@
 			{
 				Interpolators itp;
 				itp.uv = TRANSFORM_TEX(vData.uv, _MainTex);
-				itp.position = mul(UNITY_MATRIX_MVP, vData.position);
+				itp.position = UnityObjectToClipPos(vData.position);
 				return itp;
 			}
 
