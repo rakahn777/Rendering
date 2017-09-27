@@ -22,6 +22,8 @@
 
 			#pragma target 3.0
 
+			// #pragma multi_compile _ VERTEXLIGHT_ON
+
 			#pragma vertex VertexProgram
 			#pragma fragment FragmentProgram
 
@@ -44,7 +46,8 @@
 
 			#pragma target 3.0
 
-			#pragma multi_compile DIRECTION POINT
+			// #pragma multi_compile DIRECTION DIRECTIONAL_COOKIE POINT SPOT
+			#pragma multi_compile_fwdadd
 
 			#pragma vertex VertexProgram
 			#pragma fragment FragmentProgram

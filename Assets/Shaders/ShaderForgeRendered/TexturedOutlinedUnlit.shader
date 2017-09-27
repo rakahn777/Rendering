@@ -8,7 +8,9 @@ Shader "Custom/TexturedOutlinedUnlit" {
     }
     SubShader {
         Tags {
-            "RenderType"="Opaque"
+            "RenderType"="Transparent"
+            "IgnoreProjector"="True" 
+			"RenderType"="Transparent"
         }
         Pass {
             Name "Outline"

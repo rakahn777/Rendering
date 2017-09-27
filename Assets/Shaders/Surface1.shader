@@ -11,47 +11,22 @@
 
 	SubShader
 	{
-		Pass 
+		CGPROGRAM
+
+		#pragma surface surf Lambert
+
+		sampler2D _MainTex;
+
+		struct Input
 		{
-			Tags
-			{
-				"LightMode" = "ForwardBase"
-			}
+			float2 uv_MainTex; 
+		};
 
-			CGPROGRAM
-
-			#pragma target 3.0
-
-			#pragma vertex VertexProgram
-			#pragma fragment FragmentProgram
-
-			#include "PBLighting.cginc"
-
-			ENDCG
+		void surf (Input IN, inout SurfaceOutput o)
+		{
+			o.Albedo = tex2D(_MainTex, IN.uv_MainTex);
 		}
 
-		Pass
-		{
-			Tags
-			{
-				"LightMode" = "ForwardAdd"
-			}
-
-			Blend One One
-			ZWrite Off
-
-			CGPROGRAM
-
-			#pragma target 3.0
-
-			#pragma vertex VertexProgram
-			#pragma fragment FragmentProgram
-
-			#define POINT
-
-			#include "PBLighting.cginc"
-
-			ENDCG
-		}
+		ENDCG
 	}
 }
