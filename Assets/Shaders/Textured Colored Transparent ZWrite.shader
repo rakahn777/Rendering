@@ -22,6 +22,7 @@
 		{
 			// Cull Off
 			// ZWrite Off
+			ColorMask RGBA
 			Blend SrcAlpha OneMinusSrcAlpha
 			
 			CGPROGRAM
