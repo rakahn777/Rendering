@@ -7,16 +7,21 @@
 float4 _Tint;
 sampler2D _MainTex;
 float4 _MainTex_ST;
+sampler2D _DetailTex;
+float4 _DetailTex_ST;
 // sampler2D _HeightMap;
 // float4 _HeightMap_TexelSize;
 sampler2D _NormalMap;
+float _BumpScale;
+sampler2D _DetailNormalMap;
+float _DetailBumpScale;
 float _Metallic;
 float _Smoothness;
 
 struct Interpolators
 {
 	float4 position : SV_POSITION;
-	float2 uv : TEXCOORD0;
+	float4 uv : TEXCOORD0;
 	float3 normal : TEXCOORD1;
 	float3 worldPos : TEXCOORD2;
 	
@@ -57,7 +62,9 @@ Interpolators VertexProgram(VertexData vData)
 	Interpolators i;
 	i.position = UnityObjectToClipPos(vData.position);
 	i.worldPos = mul(unity_ObjectToWorld, vData.position);
-	i.uv = TRANSFORM_TEX(vData.uv, _MainTex);
+	// i.uv = TRANSFORM_TEX(vData.uv, _MainTex);
+	i.uv.xy = TRANSFORM_TEX(vData.uv, _MainTex);
+	i.uv.zw = TRANSFORM_TEX(vData.uv, _DetailTex);
 	i.normal = UnityObjectToWorldNormal(vData.normal);
 	// i.normal = normalize(i.normal);	
 
@@ -82,8 +89,14 @@ void InitializeFragmentNormal(inout Interpolators i)
 	// i.normal = cross(tv, tu);
 	i.normal = float3(u1 - u2, 1, v1 - v2);
 	*/
-	i.normal.xy = tex2D(_NormalMap, i.uv).wy * 2 - 1;
-	i.normal.z = sqrt(1 - saturate(dot(i.normal.xy, i.normal.xy)));
+	// i.normal.xy = tex2D(_NormalMap, i.uv).wy * 2 - 1;
+	// i.normal.xy *= _BumpScale;
+	// i.normal.z = sqrt(1 - saturate(dot(i.normal.xy, i.normal.xy)));
+	float3 mainNormal = UnpackScaleNormal(tex2D(_NormalMap, i.uv.xy), _BumpScale);
+	float3 detailNormal = UnpackScaleNormal(tex2D(_DetailNormalMap, i.uv.zw), _DetailBumpScale);
+	// i.normal = float3(mainNormal.xy + detailNormal.xy, mainNormal.z * detailNormal.z);
+	// i.normal = float3(mainNormal.xy / mainNormal.z + detailNormal.xy / detailNormal.z, 1);
+	i.normal = BlendNormals(mainNormal, detailNormal);
 	i.normal = i.normal.xzy;
 
 	i.normal = normalize(i.normal);
@@ -125,7 +138,8 @@ float4 FragmentProgram(Interpolators i) : SV_TARGET
 
 	float3 viewDir = normalize(_WorldSpaceCameraPos - i.worldPos);
 
-	float3 albedo = tex2D(_MainTex, i.uv).rgb * _Tint.rgb;
+	float3 albedo = tex2D(_MainTex, i.uv.xy).rgb * _Tint.rgb;
+	albedo *= tex2D(_DetailTex, i.uv.zw) * unity_ColorSpaceDouble;
 	
 	float3 specularTint;
 	float oneMinusReflectivity;
