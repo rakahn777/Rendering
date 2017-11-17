@@ -1,4 +1,6 @@
-﻿Shader "Custom/Texture Splatting"
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+Shader "Custom/Texture Splatting"
 {
 	Properties
 	{
@@ -39,7 +41,7 @@
 			Interpolators VertexProgram(VertexData vData)
 			{
 				Interpolators itp;
-				itp.position = mul(UNITY_MATRIX_MVP, vData.position);
+				itp.position = UnityObjectToClipPos(vData.position);
 				itp.uv = TRANSFORM_TEX(vData.uv, _MainTex);
 				itp.uvSplat = vData.uv;
 				return itp;

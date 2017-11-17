@@ -1,4 +1,6 @@
-﻿Shader "Custom/Textured With Detail	"
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+Shader "Custom/Textured With Detail	"
 {
 	Properties
 	{
@@ -39,7 +41,7 @@
 				Interpolators itp;
 				itp.uv = TRANSFORM_TEX(vData.uv, _MainTex);
 				itp.uvDetail = TRANSFORM_TEX(vData.uv, _DetailTex);
-				itp.position = mul(UNITY_MATRIX_MVP, vData.position);
+				itp.position = UnityObjectToClipPos(vData.position);
 				return itp;
 			}
 

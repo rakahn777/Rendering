@@ -1,4 +1,6 @@
-﻿Shader "Custom/Blend Texture Color"
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+Shader "Custom/Blend Texture Color"
 {
 	Properties
 	{
@@ -38,7 +40,7 @@
 			{
 				Interpolators itp;
 				itp.uv = TRANSFORM_TEX(vData.uv, _MainTex);
-				itp.position = mul(UNITY_MATRIX_MVP, vData.position);
+				itp.position = UnityObjectToClipPos(vData.position);
 				return itp;
 			}
 

@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
 Shader "Custom/TexturedOutlinedUnlit" {
     Properties {
         _Light ("Light", Color) = (0,0,0,1)
@@ -48,7 +50,7 @@ Shader "Custom/TexturedOutlinedUnlit" {
                 VertexOutput o = (VertexOutput)0;
                 // float3 normal = UnityObjectToWorldNormal(v.normal);
                 // normal = normalize(normal);
-                o.pos = mul(UNITY_MATRIX_MVP, float4(v.vertex.xyz + v.normal*_Outline,1) );
+                o.pos = UnityObjectToClipPos(float4(v.vertex.xyz + v.normal*_Outline,1) );
                 o.uv0 = v.texcoord0;                
                 return o;
             }
@@ -88,7 +90,7 @@ Shader "Custom/TexturedOutlinedUnlit" {
             VertexOutput vert (VertexInput v) {
                 VertexOutput o = (VertexOutput)0;
                 o.uv0 = v.texcoord0;
-                o.pos = mul(UNITY_MATRIX_MVP, v.vertex );
+                o.pos = UnityObjectToClipPos(v.vertex );
                 return o;
             }
             float4 frag(VertexOutput i) : COLOR {
