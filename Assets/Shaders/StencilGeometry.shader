@@ -14,8 +14,6 @@
 		{
 			Ref[_StencilMask]
 			Comp equal
-			Pass keep
-			Fail keep
 		}
 		
 		CGPROGRAM

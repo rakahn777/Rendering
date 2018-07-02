@@ -1,0 +1,227 @@
+fileFormatVersion: 2
+guid: 00396ecca7a1ec04391b8c305d708005
+timeCreated: 1513331102
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: B_Cap
+    100002: B_Cap1
+    100004: B_Cap2
+    100006: B_Cap3
+    100008: B_Cap4
+    100010: B_wing
+    100012: Back_1
+    100014: Back_2
+    100016: Chest_1
+    100018: F_Cap
+    100020: F_Cap1
+    100022: F_Cap2
+    100024: F_Cap3
+    100026: F_Cap4
+    100028: Head_1
+    100030: Hip_1
+    100032: Jaw
+    100034: L_Ankle_1
+    100036: L_Ball_1
+    100038: L_Cap
+    100040: L_Cap1
+    100042: L_Cap2
+    100044: L_Cap3
+    100046: L_Cap4
+    100048: L_Collar_1
+    100050: L_Elbow_1
+    100052: L_eye
+    100054: L_Hip_1
+    100056: L_Index_1
+    100058: L_Index_2
+    100060: L_Index_3
+    100062: L_Knee_1
+    100064: L_Pinky_1
+    100066: L_Pinky_2
+    100068: L_Pinky_3
+    100070: L_Shoulder_1
+    100072: L_Thumb_1
+    100074: L_Thumb_2
+    100076: L_Thumb_3
+    100078: L_weapon
+    100080: L_Wrist_1
+    100082: Neck_1
+    100084: NV_Dien_Ba_Quang
+    100086: //RootNode
+    100088: R_Ankle_1
+    100090: R_Ball_1
+    100092: R_cap
+    100094: R_cap1
+    100096: R_cap2
+    100098: R_cap3
+    100100: R_cap4
+    100102: R_Collar_1
+    100104: R_Elbow_1
+    100106: R_eye
+    100108: R_Hip_1
+    100110: R_Index_1
+    100112: R_Index_2
+    100114: R_Index_3
+    100116: R_Knee_1
+    100118: R_Pinky_1
+    100120: R_Pinky_2
+    100122: R_Pinky_3
+    100124: R_Shoulder_1
+    100126: R_Thumb_1
+    100128: R_Thumb_2
+    100130: R_Thumb_3
+    100132: R_weapon
+    100134: R_Wrist_1
+    100136: Root1
+    400000: B_Cap
+    400002: B_Cap1
+    400004: B_Cap2
+    400006: B_Cap3
+    400008: B_Cap4
+    400010: B_wing
+    400012: Back_1
+    400014: Back_2
+    400016: Chest_1
+    400018: F_Cap
+    400020: F_Cap1
+    400022: F_Cap2
+    400024: F_Cap3
+    400026: F_Cap4
+    400028: Head_1
+    400030: Hip_1
+    400032: Jaw
+    400034: L_Ankle_1
+    400036: L_Ball_1
+    400038: L_Cap
+    400040: L_Cap1
+    400042: L_Cap2
+    400044: L_Cap3
+    400046: L_Cap4
+    400048: L_Collar_1
+    400050: L_Elbow_1
+    400052: L_eye
+    400054: L_Hip_1
+    400056: L_Index_1
+    400058: L_Index_2
+    400060: L_Index_3
+    400062: L_Knee_1
+    400064: L_Pinky_1
+    400066: L_Pinky_2
+    400068: L_Pinky_3
+    400070: L_Shoulder_1
+    400072: L_Thumb_1
+    400074: L_Thumb_2
+    400076: L_Thumb_3
+    400078: L_weapon
+    400080: L_Wrist_1
+    400082: Neck_1
+    400084: NV_Dien_Ba_Quang
+    400086: //RootNode
+    400088: R_Ankle_1
+    400090: R_Ball_1
+    400092: R_cap
+    400094: R_cap1
+    400096: R_cap2
+    400098: R_cap3
+    400100: R_cap4
+    400102: R_Collar_1
+    400104: R_Elbow_1
+    400106: R_eye
+    400108: R_Hip_1
+    400110: R_Index_1
+    400112: R_Index_2
+    400114: R_Index_3
+    400116: R_Knee_1
+    400118: R_Pinky_1
+    400120: R_Pinky_2
+    400122: R_Pinky_3
+    400124: R_Shoulder_1
+    400126: R_Thumb_1
+    400128: R_Thumb_2
+    400130: R_Thumb_3
+    400132: R_weapon
+    400134: R_Wrist_1
+    400136: Root1
+    4300000: NV_Dien_Ba_Quang
+    7400000: idle
+    7400002: attack
+    7400004: skill
+    7400006: run
+    7400008: hit
+    7400010: die
+    7400012: victory
+    7400014: relax
+    9500000: //RootNode
+    11100000: //RootNode
+    13700000: NV_Dien_Ba_Quang
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 1
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
